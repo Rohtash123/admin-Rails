@@ -1,0 +1,25 @@
+
+
+<p class="comment-content" >
+  <img src="<%=image_path("m1.png") %>" alt="" class="account-name" />
+  <%=comment.commenter %>
+  <br>
+  <br>
+
+
+  <%= comment.body %>
+  <% if (comment.body)%>
+    <%= link_to "delete", [comment.article, comment], data: {
+      turbo_method: :delete,
+      turbo_confirm:"Are You Sure?"
+    } %>
+
+    <%end %>
+
+  <a href="http://localhost:3000/articles/<%=comment.article.id%>/comments/<%=comment.id %>/edit" methods="post">edit</a>
+
+</p>
+
+
+
+

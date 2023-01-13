@@ -1,0 +1,174 @@
+.left{
+    margin-right: -15px;
+    margin-left: 32px;
+    padding-top: 23px;
+}
+/*.left-feed-bar :hover{*/
+/*    background-color: #007AFF !important;*/
+
+
+
+/*}*/
+
+/*.feed-logo-bar :hover{*/
+/*   background-color: #007AFF !important;*/
+
+/*}*/
+
+
+.feed{
+    color: #606165;
+    position: absolute;
+    font-size: 34px;
+    margin: -38px 0px 0px -185px;
+}
+
+
+
+.feed-logo{
+    margin: 80px 0px 0px -232px;
+
+}
+.feed-logo-bar{
+
+    display: flex;
+    position: absolute;
+}
+
+.profile-logo-bar{
+
+
+
+}
+
+
+.profile{
+    color: #606165;
+    margin: 164px 0px 0px -186px;
+    position: absolute;
+    font-size: 30px;
+
+}
+
+.profile-logo{
+    position: absolute;
+    margin: 170px 0px 0px -233px;
+    width: 28px;;
+}
+
+
+.logout-logo-bar{
+    margin-top: -220px;
+
+}
+
+.logout{
+    /*position: absolute;*/
+    font-size: 32px;
+    color: #606165;
+}
+
+.button_to button {
+    font-size: 33px;
+    margin-left: -187px;
+    background: none;
+    border: none;
+    color: #606165;
+    padding-top: 179px;
+}
+
+
+.logout-logo{
+
+    margin: -234px;
+    background: none;
+    width: 32px;
+    padding-top: 504px;
+
+}
+
+.right{
+
+
+
+}
+.Name-Photo-bar{
+    margin: -13px 0px 0px -71px;
+
+}
+
+
+.Name-Photo{
+    margin: 27px 0px 0px 84px;
+}
+
+.Name{
+    color: #606165;
+    font-size: 22px;
+    margin: 41px 0px 0px 152px;
+    position: absolute;
+}
+
+
+.user-details{
+    padding: 90px 0px 1px 16px;
+    margin-right: -169px;
+}
+.user-list{
+    font-family: 'Montserrat';
+    margin-top: -61px;
+    /* top: 91px; */
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    color: #606165;
+
+}
+.first-last-name{
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 22px;
+    color: #9FA0A3;
+
+}
+.manage{
+    font-weight: 1300;
+    font-size: 31px;
+    color: #606165;
+    margin: -51px 0px 0px -206px;
+    position: absolute;
+}
+.manage-logo{
+    /*position: absolute;*/
+    margin: 214px 0px 17px -245px
+}
+.manage-logo-bar{
+    margin-top: 37px;
+
+}
+/*.................................BOOSTRAP.....................*/
+.search-icon{
+    margin: 13px 0px 0px 10px;
+    position: absolute;
+}
+.LEFT-BOOT{
+    margin: -40px 0px 0px 86px;
+}
+.feed-boot{
+    margin-top: -8px;
+    color: #606165;
+    font-size: 34px;
+    text-decoration: none;
+}
+.feed-boot-strap a{
+    margin-top: -8px;
+    color: #606165;
+    font-size: 34px;
+    text-decoration: none;
+}
+.feed-boot-strap a:hover{
+    color: #0d6efd;
+}
+.logout-boot{
+    margin: 11px 7px 26px 3px;
+}

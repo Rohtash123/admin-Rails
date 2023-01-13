@@ -1,0 +1,7 @@
+<% @accounts.each do |account| %>
+  <%= account.email %>
+  <%= account.roles.pluck(:name) %>
+  <%#= link_to 'Edit roles',edit_account_path(account) %>
+
+  <br>
+<% end %>

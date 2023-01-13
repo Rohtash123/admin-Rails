@@ -1,0 +1,206 @@
+  /* Css Reset*/
+  body{
+
+    overflow: hidden;
+      background-image: url("back64.png");
+      height: 100%;
+      width: 100%;
+      Center :and scale the image nicely ;
+      /*background-position: center;*/
+      background-repeat: no-repeat;
+      background-size: cover;
+    
+    }
+
+  .alert {
+      /*BACKGROUND: #5050f1;*/
+      font-size: 28px;
+      /*padding: 1rem 41rem;*/
+      /* border-radius: 0.25rem; */
+      color: white;
+      position: absolute;
+  }
+
+.line{
+    width: 203%;
+      background-image: linear-gradient(45deg, #377DFF, transparent);
+    padding: 1px;
+    margin-top: 51px;
+
+  }
+
+
+  .logo{
+      /*position: fixed;*/
+      /*position: absolute;*/
+      /*margin: 49px;*/
+      /*margin-top: 25px;*/
+      margin: 126px 0px -102px 50px;
+  }
+
+  .logo-m{
+      margin: -168px 0px 0px -14px;
+
+      width: 53px;
+
+
+  }
+
+  .logo-maze{
+      margin-top: -166px;
+      margin-left: 20px;
+      width: 95px;
+  }
+
+  .login-detaile{
+
+      position: absolute;
+      width: 460px;
+      height: 613px;
+      left: 741px;
+      top: 225px;
+      background: linear-gradient(152.97deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%);
+      backdrop-filter: blur(42px);
+      border-radius: 16px;
+    }
+    
+    .login{
+        
+        position: absolute;
+        width: 175px;
+        height: 49px;
+        left: 16%;
+        top: 409px;
+        background: #377DFF;
+        border-radius: 5px
+    
+    
+    
+    
+    }
+    .text{
+
+        padding: 38px 61px;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 37px;
+        line-height: 107%;
+
+        color: #FFFFFF;
+    }
+
+
+  text input{
+      position: absolute;
+      width: 175px;
+      height: 49px;
+      left: 16%;
+      top: 409px;
+      background: #377DFF;
+      border-radius: 5px
+
+  }
+
+    .Email-password{
+        position: absolute;
+        margin-right: 36%;
+        padding-left: 14%;
+        font-size: 127%;
+        height: 38%;
+        margin-top: -8%;
+    }
+    
+    
+    
+    .Email{
+        margin-bottom: 1%;
+        filter:  brightness(0) invert(1)
+        
+    
+    }
+    
+    .password{
+        margin-bottom: 1%;
+        filter:  brightness(0) invert(1)
+    
+    
+    }
+    .search-input{
+    
+        margin-left: 0%;
+        height: 18%;
+        width: 168%;
+    }
+    
+    
+    .form-check{
+       
+        margin-top: 211px;
+        padding-left: 62px;
+        font-size: 83%;
+    }
+    .form-check-label{
+        font-size: 108%;
+       filter:  brightness(0) invert(1)
+    
+    }
+
+    .form-check-input{
+        height: 23px;
+        width: 20px;
+    }
+    .new_account{
+        font-size: 22px;
+        padding-left: 64px;
+        margin-top: -23px;
+
+    }
+    .field{
+        color: white;
+        margin-top: 17px;
+
+    }
+    .field input{
+        height: 49px;
+        border: 0px solid #D1D1D1;
+        /* box-sizing: border-box; */
+        border-radius: 5px;
+    }
+    .field label {
+        font-size: 14px;
+
+
+    }
+    .actions{
+        height: 76px;
+        font-size: 36px;
+        margin-left: 2px;
+        margin-top: 23px;
+    }
+
+    .actions input{
+        color: aliceblue;
+        font-size: 28px;
+        width: 176px;
+        background: #377DFF;
+        border-radius: 5px;
+    }
+    .field-remember{
+
+        margin-top: 25px;
+    }
+    .remember-box{
+
+
+    }
+
+    .remember-me{
+
+        font-size: medium;
+        filter:  brightness(0) invert(1)
+}
+    .signup-text{
+
+        color: #377DFF;
+        margin-left: 68px;
+    }

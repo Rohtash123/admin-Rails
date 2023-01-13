@@ -1,0 +1,136 @@
+<%= stylesheet_link_tag "show.css", "data-turbo-track": "reload" %>
+
+<%= stylesheet_link_tag "change", "data-turbo-track": "reload" %>
+
+<div class="container">
+
+  <section class="left">
+    <div class="feed-logo-bar">
+      <img src="<%=image_path("4parts.png") %>" alt="" class="feed-logo" />
+      <p class="feed">Feed</p>
+    </div>
+    <div class="logo-button">
+      <div class="profile-logo-bar">
+        <img src="<%=image_path("person.png") %>" alt="" class="profile-logo" />
+        <p class="profile">Profile</p>
+      </div>
+
+    </div>
+
+    <p class="logout-logo-bar"><img src="<%=image_path(">.png") %>" alt="" class="logout-logo" />
+    <p class="logout"><%=button_to "logout", destroy_account_session_url ,method: :delete %></p>
+
+  </section>
+
+  <section class="middle">
+
+  <nav class="icon-maze">
+    <a href="http://127.0.0.1:3000/"><img src="<%=image_path("Frame 8.png") %>" alt="" class="search-bar-logo" /></a>
+    <div class="search-bar">
+      <img src="<%=image_path("bi_search.png") %>" alt="" class="search-bar-icon" />
+      <input type="text" name="" id="" class="search-bar-input" placeholder="Search here for something....."/>
+    </div>
+  </nav>
+
+  <div class="sub-container">
+
+
+
+    <div class="post">
+
+      <div class="title-container">
+        <p class="title">
+          <img src="<%=image_path("m1.png") %>" alt="" class="" /><%=@article.title %></p>
+        <div class="dropdown">
+          <button class="btn btn-secondary" type="button"data-bs-toggle="dropdown" aria-expanded="false">
+            ...
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="http://localhost:3000/articles/<%=@article.id%>/edit" class="edit-post">edit</a></li>
+            <li><%=link_to "delete" , @article_urL, data: {
+              turbo_method: :delete,
+              turbo_confirm: "Are you sure?"
+            },class: "edit-post" %></li>
+          </ul>
+        </div>
+      </div>
+      <p class="date">
+        <%#=@article.created_at.to_date%>
+        <%= time_ago_in_words(@article.created_at) %>.<%= @article.status %>
+      </p>
+      <div class="post-content">
+        <p><%=@article.body %></p>
+      </div>
+
+      <div class="post-features">
+        <div class="like">
+          <p>Likes</p>
+          <p><%=@article.likes.length %></p>
+
+          <% like = current_account.likes.find_by(article: @article) %>
+          <% if like.nil? %>
+          <form action="/likes" method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input type="hidden" name="like[article_id]" value="<%= @article.id %>">
+            <input type="submit" value="like">
+          </form>
+          <% else %>
+          <form action="<% like_path(like) %>" method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input type="hidden" name="like[article_id]" value="<%= @article.id %>">
+            <input type="hidden" name="like[article_id]"  value="<%= @article.id %>">
+            <input type="submit" value="like" class="">
+          </form>
+          <% end %>
+
+        </div>
+        <div class="comment">
+          <p><%=@article.comments.length%></p>
+          <p>Comments</p>
+        </div>
+      </div>
+      <div class="post-features-icons">
+        <img src="<%=image_path("Frame 20.png") %>"alt="">
+
+      </div>
+
+
+      <div class="comment-form">
+
+          <div class="comment-form" ></div>
+          <%= render 'comments/form' ,article:@article, comment:@article.comments.build %>
+
+
+      </div>
+
+
+      <div class="comment-section">
+        <p class="intro">comments</p>
+        <div class="comment-box-new">
+          <%= render @article.comments.order(created_at: :desc) %>
+        </div>
+        </div>
+
+    </div>
+
+  </div>
+
+  </section>
+
+
+
+
+  <section class="right">
+    <div class="Name-Photo-bar">
+      <p class="Name">
+        <%= current_account.first_name %>
+        <%= current_account.last_name %>
+      </p>
+
+      <img src="<%=image_path("pick.png") %>" alt="" class="Name-Photo" />
+    </div>
+  </section>
+
+</div>
+
+

@@ -1,0 +1,41 @@
+
+
+
+
+
+
+    <div class="form">
+      <%= form_with model: @article do |form| %>
+<!--        <p class="form-input"><%#= form.text_field :title ,placeholder:"Whats happening ?"%></p>-->
+        <img src="<%=image_path("m1.png") %>" alt="" class="form-img-m" />
+        <p class="form-input"><%= form.text_area :body ,placeholder:"Whats happening ?"%></p>
+
+        <div>
+          <%= form.label :status %><br>
+          <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+        </div>
+
+
+        <div class="form-features">
+          <div>
+            <img src="<%=image_path("Vector.png") %>">
+            <a>Live Video</a>
+
+          </div>
+          <div>
+            <img src="<%=image_path("Vector (1).png") %>">
+            <a>Photo/Video</a>
+
+          </div>
+          <div>
+            <img src="<%=image_path("Vector (2).png") %>">
+            <a>Feeling</a>
+
+          </div>
+
+
+
+          <div class="Post-btn-new"><%= form.submit "Post" %></div>
+        </div>
+      <% end %>
+    </div>

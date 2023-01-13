@@ -1,0 +1,399 @@
+
+<%= stylesheet_link_tag "style", "data-turbo-track": "reload" %>
+
+<%= stylesheet_link_tag "change", "data-turbo-track": "reload" %>
+
+
+
+
+<div class="container-flute" >
+<div class="row">
+  <div class="col-2">
+    <div class="LEFT-BOOT">
+      <div class="d-flex my-5">
+
+        <a href="http://127.0.0.1:3000/"><%= image_tag ("Frame 8.png") %></a>
+
+      </div>
+      <div class="d-flex my-5" >
+
+        <a href="http://127.0.0.1:3000/", class="feed-boot" ><%= image_tag ("4parts.png")%>
+          <span >Feed</span></a>
+
+      </div>
+
+      <div class="d-flex my-5">
+
+        <a class="feed-boot"><%= image_tag ("person.png")%>
+          <span >Profile</span></a>
+<!--        <img src="<%#=image_path("person.png") %>" alt=""  />-->
+<!--        <p >Profile</p>-->
+      </div>
+
+      <div class="d-flex my-5">
+
+        <a href="http://127.0.0.1:3000/accounts/show", class="feed-boot"><%= image_tag ("manage.png")%>
+          <span>Manage Users</span></a>
+
+<!--        <img src="<%#=image_path("manage.png") %>" alt=""  />-->
+<!--        <a href="http://127.0.0.1:3000/accounts/show" >-->
+<!--          <p >Manage Users</p></a>-->
+      </div>
+
+
+      <div class="d-flex my-5">
+        <%= image_tag ">.png", class:"logout-boot" %>
+        <p class="feed-boot-strap"><%=link_to "logout", "/accounts/sign_out" ,method: :delete %></p>
+
+
+<!--        <img src="<%#=image_path(">.png") %>" alt="" />-->
+<!--        <p><%#=link_to "logout", destroy_account_session_url ,method: :delete %></p>-->
+
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-8">
+    <section>
+        <div >
+          <%= image_tag "bi_search.png", class:"search-icon" %>
+          <input type="text" class="form-control form-control-lg" style="width: 90%;"  name="" id="search-box"  placeholder="Search here for something....."/>
+        </div>
+
+
+
+      <div class="sub-container">
+        <%= render "form", article: @article %>
+        <% @articles.order(created_at: :desc).each do |article| %>
+
+
+          <div class="post">
+
+            <div class="title-container">
+              <p class="title">
+                <img src="<%=image_path("m1.png") %>" alt="" class="" />
+                <a href="http://127.0.0.1:3000/articles/<%=article.id%>"><%=article.title %></a>
+
+              </p>
+              <div class="dropdown">
+                <button class="btn btn-secondary link-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  ...
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><a href="http://localhost:3000/articles/<%=article.id%>/edit" class="edit-post">edit</a></li>
+
+                  <li><%=link_to "delete", article_url(article.id), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  }, class: "edit-post"%></li>
+                </ul>
+              </div>
+
+            </div>
+            <%require 'date' %>
+
+            <p class="date">
+
+              <%= time_ago_in_words(article.created_at) %>.<%= article.status %>
+
+            </p>
+            <div class="post-content">
+              <p><%=article.body %></p>
+            </div>
+
+            <div class="post-features">
+              <div class="like">
+
+                <p>like</p>
+                <p><%=article.likes.length %></p>
+                <% like = current_account.likes.find_by(article: article) %>
+                <% if like.nil? %>
+                  <form action="/likes" method="post">
+                    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                    <input type="hidden" name="like[article_id]" value="<%= article.id %>">
+                    <input type="submit" value="like">
+                  </form>
+                <% else %>
+                  <form action="<% like_path(like) %>" method="post">
+                    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                    <input type="hidden" name="like[article_id]" value="<%= article.id %>">
+                    <input type="hidden" name="like[article_id]"  value="<%= article.id %>">
+                    <input type="submit" value="like">
+                  </form>
+                <% end %>
+              </div>
+              <div class="comment">
+                <!--            <p><%#=article.comments.length%></p>-->
+                <p><%=Comment.where(article_id:article.id).count %></p>
+
+                <p>Comments</p>
+              </div>
+            </div>
+            <div class="post-features-icons">
+
+              <img src="<%=image_path("Frame 20.png") %>"alt="">
+
+
+            </div>
+
+
+            <div class="form-comment">
+
+              <div class="comment-form">
+                <%= form_with model: [ article, article.comments.build ] do |form| %>
+
+                  <p class="comment-form-input-new">
+                    <%= form.text_field :body ,placeholder:"Write a comment..."%>
+                  </p>
+                  <p class="comment-btn-new">
+                    <%= button_tag( class: "button", type: "submit") do %>
+                      <%= image_tag "teli3.png" %>
+                    <% end %>
+
+                  </p>
+                <% end %>
+
+              </div>
+            </div>
+
+            <div class="comment-section">
+              <p class="intro">comments</p>
+              <%comment=article.comments.first%>
+              <%comment=Comment.where(article_id:article.id)%>
+
+              <div class="comment-box">
+
+
+                <!--                <p class="comment-content"><%#=comment.body%></p>-->
+                <p class="comment-content">
+                  <img src="<%=image_path("m1.png") %>" alt="" class="account-name" />
+                  <%=comment.present? ?  comment.last.commenter: '' %></p>
+                <%=comment.present? ?  comment.last.body : '' %></p>
+                <p class="comment-like"></p>
+                <!--                <img src="<%#=image_path("DIL.png") %>"alt="">-->
+
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </section>
+  </div>
+
+  <div class="col-2">
+    <section class="right">
+      <div class="Name-Photo-bar">
+        <p class="Name">
+          <%= current_account.first_name %>
+          <%= current_account.last_name %>
+        </p>
+
+        <img src="<%=image_path("pick.png") %>" alt="" class="Name-Photo" />
+      </div>
+
+      <div class="user-details">
+        <% if current_account.roles.first.name=="admin" %>
+          <p class="user-list">Users List</p><br>
+          <%@accounts.each do |acc| %>
+            <% unless acc.articles.blank? %>
+              <p class="first-last-name"><%= image_tag "m1.png" %>    <%=acc.first_name %>  <%=acc.last_name %> </p>
+            <%end %>
+          <% end %>
+        <% end %>
+      </div>
+    </section>
+  </div>
+</div>
+</div>
+
+<!--..........................<<<<<<<<>>>>>>>>>>>>>>>>>>>>...............-->
+
+
+<!--  <section class="left">-->
+<!--    <div class="left-feed-bar">-->
+<!--    <div class="feed-logo-bar">-->
+<!--      <a href="http://127.0.0.1:3000/"> <img src="<%#=image_path("4parts.png") %>" alt="" class="feed-logo" /><p class="feed">Feed</p></a>-->
+<!--    </div>-->
+<!--    </div>-->
+<!--    <div class="logo-button">-->
+<!--      <div class="profile-logo-bar">-->
+<!--        <img src="<%#=image_path("person.png") %>" alt="" class="profile-logo" />-->
+<!--        <p class="profile">Profile</p>-->
+<!--      </div>-->
+
+<!--      <div class="manage-logo-bar">-->
+<!--        <img src="<%#=image_path("manage.png") %>" alt="" class="manage-logo" />-->
+<!--        <a href="http://127.0.0.1:3000/accounts/show" ><p class="manage">Manage Users</p></a>-->
+<!--      </div>-->
+
+
+<!--    <div class="logout-logo-bar">-->
+<!--    <img src="<%#=image_path(">.png") %>" alt="" class="logout-logo" />-->
+<!--    <p class="logout"><%#=button_to "logout", destroy_account_session_url ,method: :delete %></p>-->
+<!--   </div>-->
+
+<!--  </section>-->
+
+
+
+
+<!--  <section class="middle">-->
+
+<!--  <nav class="icon-maze">-->
+<!--    <a href="http://127.0.0.1:3000/"><img src="<%#=image_path("Frame 8.png") %>" alt="" class="search-bar-logo" /></a>-->
+<!--    <div class="search-bar">-->
+<!--      <img src="<%#=image_path("bi_search.png") %>" alt="" class="search-bar-icon" />-->
+<!--      <input type="text" name="" id="" class="search-bar-input" placeholder="Search here for something....."/>-->
+<!--    </div>-->
+<!--  </nav>-->
+
+
+<!--  <div class="sub-container">-->
+    <%#= render "form", article: @article %>
+    <%# @articles.order(created_at: :desc).each do |article| %>
+
+
+<!--      <div class="post">-->
+
+<!--        <div class="title-container">-->
+<!--          <p class="title">-->
+<!--            <img src="<%#=image_path("m1.png") %>" alt="" class="" />-->
+<!--            <a href="http://127.0.0.1:3000/articles/<%#=article.id%>"><%#=article.title %></a>-->
+
+<!--          </p>-->
+<!--          <div class="dropdown">-->
+<!--            <button class="btn btn-secondary link-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--               ...-->
+<!--            </button>-->
+<!--            <ul class="dropdown-menu dropdown-menu-end">-->
+<!--              <li><a href="http://localhost:3000/articles/<%#=article.id%>/edit" class="edit-post">edit</a></li>-->
+
+<!--              <li><%#=link_to "delete", article_url(article.id), data: {-->
+<!--                turbo_method: :delete,-->
+<!--                turbo_confirm: "Are you sure?"-->
+<!--              }, class: "edit-post"%></li>-->
+<!--            </ul>-->
+<!--          </div>-->
+
+<!--        </div>-->
+        <%#require 'date' %>
+
+<!--        <p class="date">-->
+          <%#=article.created_at.to_da?te%>
+<!--          <%#= time_ago_in_words(article.created_at) %>.<%#= article.status %>-->
+
+<!--        </p>-->
+<!--        <div class="post-content">-->
+<!--          <p><%#=article.body %></p>-->
+<!--        </div>-->
+
+<!--        <div class="post-features">-->
+<!--          <div class="like">-->
+
+<!--            <p>like</p>-->
+<!--            <p><%#=article.likes.length %></p>-->
+
+            <%# like = current_account.likes.find_by(article: article) %>
+            <%# if like.nil? %>
+<!--              <form action="/likes" method="post">-->
+<!--                <input type="hidden" name="authenticity_token" value="<%#= form_authenticity_token %>">-->
+<!--                <input type="hidden" name="like[article_id]" value="<%#= article.id %>">-->
+<!--                <input type="submit" value="like">-->
+<!--              </form>-->
+            <%# else %>
+<!--              <form action="<%# like_path(like) %>" method="post">-->
+<!--                <input type="hidden" name="authenticity_token" value="<%#= form_authenticity_token %>">-->
+<!--                <input type="hidden" name="like[article_id]" value="<%#= article.id %>">-->
+<!--                <input type="hidden" name="like[article_id]"  value="<%#= article.id %>">-->
+<!--                <input type="submit" value="like">-->
+<!--              </form>-->
+            <%# end %>
+<!--          </div>-->
+<!--          <div class="comment">-->
+<!--            <p><%#=article.comments.length%></p>-->
+<!--            <p><%#=Comment.where(article_id:article.id).count %></p>-->
+
+<!--            <p>Comments</p>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="post-features-icons">-->
+
+<!--          <img src="<%#=image_path("Frame 20.png") %>"alt="">-->
+
+
+<!--        </div>-->
+
+
+<!--        <div class="form-comment">-->
+
+<!--          <div class="comment-form">-->
+            <%#= form_with model: [ article, article.comments.build ] do |form| %>
+
+<!--              <p class="comment-form-input-new">-->
+                <%#= form.text_field :body ,placeholder:"Write a comment..."%>
+<!--              </p>-->
+<!--              <p class="comment-btn-new">-->
+                <%#= form.submit ""%>
+                <%#= button_tag( class: "button", type: "submit") do %>
+                  <%#= image_tag "teli3.png" %>
+                    <%# end %>
+
+<!--              </p>-->
+            <%# end %>
+
+<!--          </div>-->
+<!--        </div>-->
+
+<!--        <div class="comment-section">-->
+<!--          <p class="intro">comments</p>-->
+            <%#comment=article.comments.first%>
+          <%#comment=Comment.where(article_id:article.id)%>
+
+<!--              <div class="comment-box">-->
+
+
+<!--                <p class="comment-content"><%#=comment.body%></p>-->
+<!--                <p class="comment-content">-->
+<!--                  <img src="<%#=image_path("m1.png") %>" alt="" class="account-name" />-->
+<!--                  <%#=comment.present? ?  comment.last.commenter: '' %></p>-->
+<!--                <%#=comment.present? ?  comment.last.body : '' %></p>-->
+<!--                <p class="comment-like"></p>-->
+<!--                <img src="<%#=image_path("DIL.png") %>"alt="">-->
+
+<!--              </div>-->
+<!--        </div>-->
+<!--      </div>-->
+    <%# end %>
+<!--  </div>-->
+
+<!--</section>-->
+
+
+<!--  <section class="right">-->
+
+
+<!--    <div class="Name-Photo-bar">-->
+<!--      <p class="Name">-->
+      <%#= current_account.first_name %>
+        <%#= current_account.last_name %>
+<!--      </p>-->
+
+<!--      <img src="<%#=image_path("pick.png") %>" alt="" class="Name-Photo" />-->
+<!--    </div>-->
+
+<!--    <div class="user-details">-->
+      <%# if current_account.roles.first.name=="admin" %>
+<!--        <p class="user-list">Users List</p><br>-->
+        <%#@accounts.each do |acc| %>
+        <%# unless acc.articles.blank? %>
+<!--          <p class="first-last-name"><%#= image_tag "m1.png" %>    <%#=acc.first_name %>  <%#=acc.last_name %> </p>-->
+      <%#end %>
+    <%# end %>
+      <%# end %>
+<!--    </div>-->
+<!--  </section>-->
+
+
+</div>

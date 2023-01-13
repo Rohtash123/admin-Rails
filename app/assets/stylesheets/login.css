@@ -1,0 +1,100 @@
+/* Css Reset*/
+body{
+    overflow: hidden;
+    background-image: url("back64.png");
+    height: 100%;
+    width: 100%;
+     Center :and scale the image nicely ;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.header{
+    position: relative;
+}
+
+
+.logo{
+    position: absolute;
+    margin: 28px;
+    margin-left: 38px;
+}
+
+.logo-m{
+    margin: -168px 0px 0px -14px;
+    width: 53px;
+
+
+}
+
+.logo-maze{
+    margin-top: -166px;
+    margin-left: 20px;
+    width: 95px;
+}
+.line{
+    width: 203%;
+    background-image: linear-gradient(45deg, #377DFF, transparent);
+    padding: 1px;
+    margin-top: 51px;
+
+}
+
+
+.text{
+    font-size: 21px;
+    bottom: 55%;
+    position: absolute;
+    right: 37%;
+    width: 27%;
+    text-align: center;
+    gap: 66px;
+    display: inline-grid;
+
+}
+.user{
+    padding: 27%;
+    margin: 0%;
+    padding-left: 37%;
+    display: flex;
+    gap: 24px;
+
+
+}
+
+
+.Create{
+
+    width: 206px;
+    height: 48px;
+    left: 756px;
+    top: 481px;
+    background: #007AFF;
+    border-radius: 5px;
+
+}
+.Create a{
+    color: white;
+    text-decoration: auto;
+}
+
+.login{
+    width: 206px;
+    height: 48px;
+    left: 756px;
+    top: 481px;
+
+    background: #EAF4FF;
+    border-radius: 5px;
+
+
+}
+.login a{
+    text-decoration: auto;
+}
+.or{
+    margin-top: 10px;
+    font-size: 22px;
+    filter:  brightness(0) invert(1);
+
+}

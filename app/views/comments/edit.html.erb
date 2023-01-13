@@ -1,0 +1,160 @@
+<%#=render "comments/form" , article:@article, comment:@comment %>
+
+<%#= form_with model: [ @article, @comment ] do |form| %>
+
+<!--  <p class="comment-form-input-new">-->
+    <%#= form.text_field :body %>
+<!--  </p>-->
+<!--  <p class="comment-btn-new">-->
+    <%#= form.submit "create"%>
+<!--  </p>-->
+<%# end %>
+
+<!--..............................................-->
+<%= stylesheet_link_tag "change", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "show.css", "data-turbo-track": "reload" %>
+<!--......................................................-->
+
+
+<div class="container-fluid" >
+  <div class="row">
+    <div class="col-2">
+      <div class="LEFT-BOOT">
+        <div class="d-flex my-5">
+
+          <a href="http://127.0.0.1:3000/"><%= image_tag ("Frame 8.png") %></a>
+
+        </div>
+        <div class="d-flex my-5" >
+
+          <a href="http://127.0.0.1:3000/", class="feed-boot" ><%= image_tag ("4parts.png")%>
+            <span >Feed</span></a>
+
+        </div>
+
+        <div class="d-flex my-5">
+
+          <a class="feed-boot"><%= image_tag ("person.png")%>
+            <span >Profile</span></a>
+          <!--        <img src="<%#=image_path("person.png") %>" alt=""  />-->
+          <!--        <p >Profile</p>-->
+        </div>
+
+        <div class="d-flex my-5">
+
+          <a href="http://127.0.0.1:3000/accounts/show", class="feed-boot"><%= image_tag ("manage.png")%>
+            <span>Manage Users</span></a>
+
+          <!--        <img src="<%#=image_path("manage.png") %>" alt=""  />-->
+          <!--        <a href="http://127.0.0.1:3000/accounts/show" >-->
+          <!--          <p >Manage Users</p></a>-->
+        </div>
+
+
+        <div class="d-flex my-5">
+          <%= image_tag ">.png", class:"logout-boot" %>
+          <p class="feed-boot-strap"><%=link_to "logout", destroy_account_session_url ,method: :delete %></p>
+
+          <!--        <img src="<%#=image_path(">.png") %>" alt="" />-->
+          <!--        <p><%#=link_to "logout", destroy_account_session_url ,method: :delete %></p>-->
+
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-8">
+      <section>
+        <div >
+          <%= image_tag "bi_search.png", class:"search-icon" %>
+          <input type="text" class="form-control form-control-lg" style="width: 90%;"  name="" id="search-box"  placeholder="Search here for something....."/>
+        </div>
+
+  <div class="sub-container">
+
+
+
+    <div class="post">
+
+      <div class="title-container">
+        <p class="title"><%=@article.title %></p>
+        <p class="edit-post"><%= link_to "Destroy", article_path(@article), data: {
+          turbo_method: :delete,
+          turbo_confirm: "Are you sure ?"
+        } %></p>
+      </div>
+
+      <div class="post-content">
+        <p><%=@article.body %></p>
+      </div>
+
+      <div class="post-features">
+        <div class="like">
+          <p></p>
+          <p>Likes</p>
+        </div>
+        <div class="comment">
+          <p></p>
+          <p>Comments</p>
+        </div>
+      </div>
+      <div class="post-features-icons">
+        <img src="<%=image_path("Frame 20.png") %>"alt="">
+      </div>
+
+
+      <div class="comment-form">
+        <div class="comment-form" ></div>
+        <%= render 'comments/form' ,article:@article, comment:@article.comments.build %>
+
+
+      </div>
+
+      <div class="comment-section">
+        <p class="intro">comments</p>
+
+        <div class="comment-box-new">
+
+          <%=render "comments/form" , article:@article, comment:@comment %>
+          <div class="comment-box-new">
+            <%= render @article.comments.order(created_at: :desc) %>
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+  </section>
+    </div>
+
+    <div class="col-2">
+      <section class="right">
+        <div class="Name-Photo-bar">
+          <p class="Name">
+            <%= current_account.first_name %>
+            <%= current_account.last_name %>
+          </p>
+
+          <img src="<%=image_path("pick.png") %>" alt="" class="Name-Photo" />
+        </div>
+
+<!--        <div class="user-details">-->
+          <%# if current_account.roles.first.name=="admin" %>
+<!--            <p class="user-list">Users List</p><br>-->
+            <%#@accounts.each do |acc| %>
+              <%# unless acc.articles.blank? %>
+<!--                <p class="first-last-name"><%#= image_tag "m1.png" %>    <%#=acc.first_name %>  <%#=acc.last_name %> </p>-->
+              <%#end %>
+            <%# end %>
+          <%# end %>
+<!--        </div>-->
+      </section>
+    </div>
+  </div>
+</div>

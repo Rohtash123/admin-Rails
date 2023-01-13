@@ -1,0 +1,113 @@
+
+<%= stylesheet_link_tag "style", "data-turbo-track": "reload" %>
+
+<%= stylesheet_link_tag "change", "data-turbo-track": "reload" %>
+
+
+
+
+<div class="container" >
+
+  <section class="left">
+    <!--    <div class="left-feed-bar">-->
+    <div class="feed-logo-bar">
+      <img src="<%=image_path("4parts.png") %>" alt="" class="feed-logo" />
+      <p class="feed">Feed</p>
+    </div>
+    <!--    </div>-->
+    <!--    <div class="logo-button">-->
+    <div class="profile-logo-bar">
+      <img src="<%=image_path("person.png") %>" alt="" class="profile-logo" />
+      <p class="profile">Profile</p>
+    </div>
+
+    <div class="manage-logo-bar">
+      <img src="<%=image_path("manage.png") %>" alt="" class="manage-logo" />
+      <p class="manage">Manage Users</p>
+    </div>
+
+
+    <div class="logout-logo-bar">
+      <img src="<%=image_path(">.png") %>" alt="" class="logout-logo" />
+      <p class="logout"><%=button_to "logout", destroy_account_session_url ,method: :delete %></p>
+    </div>
+
+  </section>
+
+
+
+
+  <section class="middle">
+
+    <nav class="icon-maze">
+      <a href="http://127.0.0.1:3000/"><img src="<%=image_path("Frame 8.png") %>" alt="" class="search-bar-logo" /></a>
+      <div class="search-bar">
+        <img src="<%=image_path("bi_search.png") %>" alt="" class="search-bar-icon" />
+
+      </div>
+    </nav>
+
+
+    <div class="sub-container">
+
+
+        <div class="post">
+
+          <div class="title-container">
+            <p class="title">
+
+
+
+          <div class="form-comment">
+
+            <div class="comment-form">
+
+
+                <p class="comment-form-input-new">
+
+                </p>
+
+            </div>
+          </div>
+
+          <div class="comment-section">
+            <p class="intro">comments</p>
+            <%#comment=article.comments.first%>
+            <%#comment=Comment.where(article_id:article.id)%>
+
+            <div class="comment-box">
+
+
+    </div>
+
+  </section>
+</div>
+
+  <section class="right">
+
+
+    <div class="Name-Photo-bar">
+      <p class="Name">
+        <%#= current_account.first_name %>
+        <%#= current_account.last_name %>
+      </p>
+
+      <img src="<%=image_path("pick.png") %>" alt="" class="Name-Photo" />
+    </div>
+
+<!--    <div class="user-details">-->
+      <%# if current_account.roles.first.name=="admin" %>
+<!--        <p class="user-list">Users List</p><br>-->
+        <%#@accounts.each do |acc| %>
+          <%# unless acc.articles.blank? %>
+<!--            <p class="first-last-name"><%#= image_tag "m1.png" %>    <%#=acc.first_name %>  <%#=acc.last_name %> </p>-->
+          <%#end %>
+        <%# end %>
+      <%# end %>
+<!--    </div>-->
+  </section>
+
+
+
+
+</div>

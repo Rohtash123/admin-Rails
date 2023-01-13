@@ -1,0 +1,30 @@
+<%#= form_with model: [ @article, @article.comments.build ] do |form| %>
+
+<!--  <p class="comment-form-input-new">-->
+    <%#= form.text_field :body %>
+<!--  </p>-->
+<!--  <p class="comment-btn-new">-->
+    <%#= form.submit "create"%>
+<!--  </p>-->
+<%# end %>
+
+<%= form_with model: [ article, comment ] do |form| %>
+
+  <p class="comment-form-input-new">
+
+<!--  <p>-->
+<!--    <%#= form.label :status %><br>-->
+    <%#= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+<!--  </p>-->
+
+
+
+  <%= form.text_field :body ,placeholder:"Write a comment..."%>
+  </p>
+  <p class="comment-btn-new">
+    <%#= form.submit ""%>
+    <%= button_tag( class: "button", type: "submit") do %>
+      <%= image_tag "teli3.png" %>
+    <% end %>
+  </p>
+<% end %>
